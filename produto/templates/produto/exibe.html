@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Computador
+{% endblock %}
+
+{% block estilo %}
+    <style>
+        a {
+            color: #337ab7;
+        }
+    </style>
+{% endblock %}
+
+{% block conteudo %}
+   <div class="row">
+      <div class="col-md-3 mb-3 mb-md-0">
+         <!-- style="min-height: 150px; min-width: 150px;" -->
+         <img class="img-fluid rounded" 
+         src="{% static 'produto/imagens/' %}{{ produto.imagem }}">
+      </div>
+      <div class="col-md-9">
+         <h4>{{ produto.nome }}</h4>
+         <h5><a href="{{ produto.categoria.get_absolute_path }}">{{ produto.categoria }}</a></h5>
+         <p>R$ {{ produto.preco }}</p>
+         <p>{{ produto.descricao }}</p>
+      </div>
+   </div>
+{% endblock %}

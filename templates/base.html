@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'produto/css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'produto/css/base.css' %}" />
+    <title>{% block titulo %}Loja Virtual{% endblock %}</title>
+    {% block estilo %}
+        <style>
+
+        </style>
+    {% endblock %}
+</head>
+<body class="barra">
+    {% include "base/header.html" %}
+
+    <div class="container">
+        {% block conteudo %}
+
+        {% endblock %}
+    </div>
+
+    {% include "base/footer.html" %}
+    <script src="{% static 'produto/js/jquery-3.3.1.js' %}"></script>
+    <script src="{% static 'produto/js/popper.js' %}"></script>
+    <script src="{% static 'produto/js/bootstrap.js' %}"></script>
+    <script src="{% static 'produto/js/script.js' %}"></script>
+</body>
+</html>
