@@ -36,14 +36,14 @@ class CategoriaAguas(models.Model):
         db_table = 'categoria_aguas'
 
     def get_absolute_path(self):
-        return reverse('agua:lista_aguas_por_categoria', args=[self.slug])
+        return reverse('produto:lista_aguas_por_categoria', args=[self.slug])
 
     def __str__(self):
         return self.nome
 
 
 class Agua(models.Model):
-    categoria = models.ForeignKey(CategoriaAguas, related_name='agua', on_delete=models.DO_NOTHING)
+    categoria = models.ForeignKey(CategoriaAguas, related_name='aguas', on_delete=models.DO_NOTHING)
     nome = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)
     imagem = models.CharField(max_length=200)
@@ -56,7 +56,7 @@ class Agua(models.Model):
         db_table = 'agua'
 
     def get_absolute_path(self):
-        return reverse('agua:exibe_agua', args=[self.id, self.slug])
+        return reverse('produto:exibe_agua', args=[self.id, self.slug])
 
     def __str__(self):
         return self.nome

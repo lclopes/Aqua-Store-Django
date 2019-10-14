@@ -6,13 +6,13 @@ app_name = 'produto'
 
 urlpatterns = [
     # para http://localhost:8000
-    path('', views.lista_produtos, name='lista_produtos'),
+    path('', views.lista_aguas, name='lista_aguas'),
 
     # http://localhost:8000/computador/
-    path('<slug:slug_da_categoria>/', views.lista_produtos, name='lista_produtos_por_categoria'),
+    path('<slug:slug_da_categoria>/', views.lista_aguas, name='lista_aguas_por_categoria'),
 
     # http://localhost:8000/6/smartphone-samsung-galaxy-s8-plus/
-    path('<int:id>/<slug:slug_do_produto>/', views.exibe_produto, name='exibe_produto'),
+    path('<int:id>/<slug:slug_da_agua>/', views.exibe_agua, name='exibe_agua'),
 
 ]
 
