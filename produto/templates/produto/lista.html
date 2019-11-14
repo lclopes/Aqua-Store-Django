@@ -24,10 +24,10 @@
 {% endblock %}
 
 {% block conteudo %}
-    <div class="row">
-        <div class="col-lg-3">
-            <h3 style="text-align:center">Categorias</h3>
-            <div class="nav flex-column nav-pills">
+    <div class="row" >
+        <div class="col-lg-3 sticky-top sticky-offset">
+            <div class="nav flex-column nav-pills nav-stacked sticky-top sticky-offset" >
+                <h3 style="text-align:center">Categorias</h3>
                 <a class="nav-link {% if not categoria %}active{% endif %}"
                    href="/">Todos</a>
                 {% for cat in categorias %}

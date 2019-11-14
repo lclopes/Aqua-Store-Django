@@ -114,3 +114,7 @@
         /*display: none;*/
     }
 }
+
+.sticky-offset {
+    top: 90px;
+}
