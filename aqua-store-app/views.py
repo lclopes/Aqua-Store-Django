@@ -23,3 +23,6 @@ def exibe_agua(request, id, slug_da_agua):
 
 def sobre(request):
     return render(request, 'aqua-store-app/sobre.html')
+
+def cadastro(request):
+    return render(request, 'aqua-store-app/cadastro.html')

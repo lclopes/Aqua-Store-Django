@@ -1,0 +1,179 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "base/header.html" %}
+    {% include "base/bgimage.html" %}
+    <br>
+</head>
+
+{% block cadastro %}
+    <body class="bg-blue">
+        <div class="container bg-white shadow-lg p-3">
+
+            <div class="modal-body">
+                <form id="form-cadastro" method="post">
+                    <fieldset>
+                        <legend class="font-weight-bold text-center p-3">Cadastro de Produto</legend>
+                        <div class="form-group row">
+                            <label for="nome" class="col-form-label col-lg-2 text-lg-right font-weight-bold">Nome</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control form-control-sm" placeholder="Insira o nome do produto"
+                                       name="nome" id="nome">
+                                <div class="invalid-feedback">
+                                    Este campo deve ser preenchido.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-form-label col-lg-2 text-lg-right font-weight-bold">E-mail</label>
+                            <div class="col-lg-10">
+                                <input type="email" class="form-control form-control-sm" placeholder="Informe seu e-mail"
+                                       name="email" id="email">
+                                <div class="invalid-feedback">
+                                    Este campo deve ser preenchido.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="phone"
+                                   class="col-form-label col-lg-2 text-lg-right font-weight-bold">Telefone</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control form-control-sm" placeholder="Informe seu telefone"
+                                       name="phone" id="phone">
+                                <div class="invalid-feedback">
+                                    Este campo deve ser preenchido.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="sexo" class="col-form-label col-lg-2  text-lg-right font-weight-bold">Sexo</label>
+                            <div class="col-lg-10">
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="sexo" id="sexo-masc" value="M">
+                                    <label class="form-check-label" for="sexo-masc">Masculino</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="sexo" id="sexo-fem" value="F">
+                                    <label class="form-check-label" for="sexo-fem">Feminino</label>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Este campo deve ser preenchido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="endereco" class="col-form-label col-lg-2  text-lg-right font-weight-bold">Endereço
+                                para
+                                entregas</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control form-control-sm" name="endereco" id="endereco"
+                                       placeholder="Informe seu endereço">
+                                <div class="invalid-feedback">
+                                    Este campo deve ser preenchido.
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend class="font-weight-bold text-center p-3" id="somefdp">Informações de Cobrança</legend>
+                        <h5 class="font-weight-bold text-center p-3">
+                            <input type="checkbox" name="chk-formcard" id="chk-formcard"> Não possuo cartão de
+                            crédito</input>
+                        </h5>
+                        <div id="form-cartao">
+                            <div class="form-group row">
+                                <label for="creditcard"
+                                       class="col-form-label col-lg-2 text-lg-right font-weight-bold">Bandeira</label>
+                                <div class="col-lg-10">
+                                    <select class="form-control form-control-sm" name="creditcard" id="creditcard">
+                                        <option value="-1">-- Selecione a bandeira do seu cartão de crédito --</option>
+                                        <option value="1">Visa</option>
+                                        <option value="2">MasterCard</option>
+                                        <option value="3">Elo</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Este campo deve ser preenchido.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="num-card" class="col-form-label col-lg-2  text-lg-right font-weight-bold">Número
+                                    do
+                                    Cartão</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control form-control-sm" name="num-card" id="num-card"
+                                           placeholder="Informe o número do seu cartão de crédito"
+                                           maxlength="19" size="19">
+                                    <div class="invalid-feedback">
+                                        Este campo deve ser preenchido.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="cvv" class="col-form-label col-lg-2  text-lg-right font-weight-bold">Código de
+                                    segurança</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control form-control-sm" name="cvv" id="cvv"
+                                           maxlength="3"
+                                           placeholder="Informe o código de segurança encontrado no verso do cartão"
+                                           size="3">
+                                    <div class="invalid-feedback">
+                                        Este campo deve ser preenchido.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="expiration" class="col-form-label col-lg-2  text-lg-right font-weight-bold">Data
+                                    de
+                                    vencimento do cartão</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control form-control-sm" name="expiration"
+                                           id="expiration"
+                                           placeholder="Informe a data de vencimento do cartão"
+                                           maxlength="5" size="5">
+                                    <div class="invalid-feedback">
+                                        Este campo deve ser preenchido.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="endereco-cob" class="col-form-label col-lg-2  text-lg-right font-weight-bold">Endereço
+                                    de
+                                    cobrança</label>
+                                <div class="col-lg-10">
+                                    <input type="checkbox" name="chk-end" id="chk-end"> Igual ao endereço para
+                                    entregas</input>
+                                    <br>
+                                    <input type="text" class="form-control form-control-sm" name="endereco-cob"
+                                           id="endereco-cob" placeholder="Informe o endereço de cobrança do cartão">
+                                    <div class="invalid-feedback">
+                                        Este campo deve ser preenchido.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-lg-10 offset-lg-2">
+                                    <button type="button" class="btn btn-primary" id="submitbtn">Finalizar Cadastro</button>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <br>
+        {% include "base/footer.html" %}
+    </body>
+{% endblock %}
+</html>
