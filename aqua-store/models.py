@@ -10,7 +10,7 @@ class Categoria(models.Model):
         db_table = 'categoria'
 
     def get_absolute_path(self):
-        return reverse('produto:lista_produtos_por_categoria', args=[self.slug])
+        return reverse('aqua-store:lista_produtos_por_categoria', args=[self.slug])
 
     def __str__(self):
         return self.nome
@@ -36,7 +36,7 @@ class CategoriaAguas(models.Model):
         db_table = 'categoria_aguas'
 
     def get_absolute_path(self):
-        return reverse('produto:lista_aguas_por_categoria', args=[self.slug])
+        return reverse('aqua-store:lista_aguas_por_categoria', args=[self.slug])
 
     def __str__(self):
         return self.nome
@@ -56,7 +56,7 @@ class Agua(models.Model):
         db_table = 'agua'
 
     def get_absolute_path(self):
-        return reverse('produto:exibe_agua', args=[self.id, self.slug])
+        return reverse('aqua-store:exibe_agua', args=[self.id, self.slug])
 
     def __str__(self):
         return self.nome
@@ -73,14 +73,14 @@ class Produto(models.Model):
     disponivel = models.BooleanField(default=True)
 
     class Meta:
-        db_table = 'produto'
+        db_table = 'aqua-store'
 
     def get_absolute_path(self):
-        return reverse('produto:exibe_produto', args=[self.id, self.slug])
+        return reverse('aqua-store:exibe_produto', args=[self.id, self.slug])
 
     def __str__(self):
         return self.nome
-# A view abaixo é utilizada para exibir um determinado produto
+# A view abaixo é utilizada para exibir um determinado aqua-store
 # Este URLconf trata requisições para http://localhost:8000/6/smartphone-samsung-galaxy-s8-plus/
 # path('<int:id>/<slug:slug_do_produto>/', views.exibe_produto, name='exibe_produto'),
 # /5/smartphone-samsung-galaxy-s8-plus/
@@ -88,6 +88,6 @@ class Produto(models.Model):
 # /2/computador-com-monitor-led-19-5-easypc-intel-core-i5-8gb-hd-1tb/
 
 # from shop.models import Produto
-# produto = Produto.objects.get(id=1)
-# produto.get_absolute_path()
+# aqua-store = Produto.objects.get(id=1)
+# aqua-store.get_absolute_path()
 # '/1/notebook-del-vostro-3458-i3/'

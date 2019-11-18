@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'produto',
+    'aqua-store',
 ]
 
 MIDDLEWARE = [
@@ -124,5 +124,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_ROOT = 'C:/Users/lucas/OneDrive/UFF/2019.2/Desenvolvimento Web/django-06-produto-categoria-completo/produto/static/media'
+MEDIA_ROOT = 'C:/Users/lucas/OneDrive/UFF/2019.2/Desenvolvimento Web/django-06-produto-categoria-completo/aqua-store/static/media'
 MEDIA_URL = '/media/'

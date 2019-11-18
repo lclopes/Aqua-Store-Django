@@ -1,12 +1,13 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <head>
     {% include "base/header.html" %}
     {% include "base/bgimage.html" %}
     <br>
 </head>
-
+<body class="bg-blue">
    <div class="container bg-white shadow-lg p-3 mb-5">
       <h5 style="margin-top: 10px; text-align: center">A Aqua Store é uma loja virtual de águas, fundada em 2019, pelo
          sommelier
@@ -57,10 +58,10 @@
       </div>
    </footer>
 
-   <script src="assets/js/jquery-3.3.1.js"></script>
-   <script src="assets/js/popper.js"></script>
-   <script src="assets/js/bootstrap.js"></script>
-   <script src="assets/js/script.js"></script>
+   <script src="{% static 'aqua-store/js/jquery-3.3.1.js' %}"></script>
+   <script src="{% static 'aqua-store/js/popper.js' %}"></script>
+   <script src="{% static 'aqua-store/js/bootstrap.js' %}"></script>
+   <script src="{% static 'aqua-store/js/script.js' %}"></script>
 </body>
 
 </html>
