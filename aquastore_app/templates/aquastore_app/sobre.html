@@ -1,0 +1,61 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<head>
+    {% include "base/header.html" %}
+    {% include "base/bgimage.html" %}
+    <br>
+</head>
+<body class="bg-blue">
+   <div class="container bg-white shadow-lg p-3 mb-5">
+      <h5 style="margin-top: 10px; text-align: center">A Aqua Store é uma loja virtual de águas, fundada em 2019, pelo
+         sommelier
+         de águas Lucas de Castro Lopes. <br>
+
+         Nosso objetivo é levar para todos a saúde e a refrescância que apenas um bom copo d'água pode trazer. <br>
+         Boas compras!
+      </h5>
+
+      <div class="jumbotron text-center mb-4 bg-white">
+         <h6 style="margin-top: 10px; text-align: justify">Em 2017, o então estudante de Ciência da Computação Lucas de
+            Castro Lopes
+            foi apresentado ao mundo da degustação de águas gourmet. Inicialmente ele achou isso uma perda de tempo,
+            pois "como que
+            águas poderiam ter gostos distintos? É tudo água!" <br>
+            No entanto, o tempo se mostrou aliado de Lucas, e pouco tempo depois, já dentro do universo das águas, teve a
+            ideia de
+            criar um site para apresentar as diferentes águas às pessoas do Brasil e do mundo. Assim, o embrião da Aqua
+            Store
+            estava nascendo.<br>
+            Logo, a Aqua Store passou a ter como objetivo vender água em geral, saindo apenas do nicho das águas
+            gourmet.
+
+         </h6>
+      </div>
+      <h3 style="text-align: center">Degustação de águas gourmet</h3>
+      <br>
+      <div class="embed-responsive embed-responsive-21by9">
+         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/juf4EVFTNNE" allowfullscreen></iframe>
+      </div>
+      <div style="margin-top: 30px" class="jumbotron text-center mb-4 bg-white">
+         <blockquote class="blockquote">
+            <p>Hidrate-se!
+            </p>
+            <div class="blockquote-footer">
+               Lucas de Castro Lopes
+            </div>
+         </blockquote>
+
+      </div>
+   </div>
+   <br>
+   {% include "base/footer.html" %}
+
+   <script src="{% static 'aquastore_app/js/jquery-3.3.1.js' %}"></script>
+   <script src="{% static 'aquastore_app/js/popper.js' %}"></script>
+   <script src="{% static 'aquastore_app/js/bootstrap.js' %}"></script>
+   <script src="{% static 'aquastore_app/js/script.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "base/header.html" %}
+    {% include "base/bgimage.html" %}
+    <br>
+</head>
+
+{% block estilo %}
+    <style>
+        a {
+            color: #337ab7;
+        }
+    </style>
+{% endblock %}
+
+{% block conteudo %}
+    <body class="bg-blue">
+    <div class="container bg-white shadow-lg p-3 mb-5 ">
+        <div class="row">
+            <div class="col-md-3 mb-3 mb-md-0">
+                <!-- style="min-height: 150px; min-width: 150px;" -->
+                <img class="img-fluid rounded"
+                     src="{% static 'aguas/' %}{{ agua.imagem }}">
+            </div>
+            <div class="col-md-9">
+                <h4>{{ agua.nome }}</h4>
+                <h5><a href="{{ agua.categoria.get_absolute_path }}">{{ agua.categoria }}</a></h5>
+                <p>R$ {{ agua.preco }}</p>
+                <p>{{ agua.descricao }}</p>
+                <button type="button" class="btn btn-primary">Comprar</button>
+            </div>
+        </div>
+    </div>
+    {% include "base/footer.html" %}
+    </body>
+    <script src="{% static 'aquastore_app/js/jquery-3.3.1.js' %}"></script>
+    <script src="{% static 'aquastore_app/js/popper.js' %}"></script>
+    <script src="{% static 'aquastore_app/js/bootstrap.js' %}"></script>
+    <script src="{% static 'aquastore_app/js/script.js' %}"></script>
+
+{% endblock %}
+
