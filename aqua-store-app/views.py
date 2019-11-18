@@ -11,15 +11,15 @@ def lista_aguas(request, slug_da_categoria=None):
       categoria = get_object_or_404(CategoriaAguas, slug=slug_da_categoria)
       aguas = aguas.filter(categoria=categoria).order_by("nome")
 
-   return render(request, 'aqua-store/lista.html', {'categorias': categorias,
+   return render(request, 'aqua-store-app/lista.html', {'categorias': categorias,
                                                  'aguas': aguas,
                                                  'categoria': categoria})
 
 
 def exibe_agua(request, id, slug_da_agua):
    agua = get_object_or_404(Agua, id=id)
-   return render(request, 'aqua-store/exibe.html', {'agua': agua})
+   return render(request, 'aqua-store-app/exibe.html', {'agua': agua})
 
 
 def sobre(request):
-    return render(request, 'aqua-store/sobre.html')
+    return render(request, 'aqua-store-app/sobre.html')

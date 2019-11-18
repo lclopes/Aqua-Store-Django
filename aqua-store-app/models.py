@@ -10,7 +10,7 @@ class Categoria(models.Model):
         db_table = 'categoria'
 
     def get_absolute_path(self):
-        return reverse('aqua-store:lista_produtos_por_categoria', args=[self.slug])
+        return reverse('aqua-store-app:lista_produtos_por_categoria', args=[self.slug])
 
     def __str__(self):
         return self.nome
@@ -36,7 +36,7 @@ class CategoriaAguas(models.Model):
         db_table = 'categoria_aguas'
 
     def get_absolute_path(self):
-        return reverse('aqua-store:lista_aguas_por_categoria', args=[self.slug])
+        return reverse('aqua-store-app:lista_aguas_por_categoria', args=[self.slug])
 
     def __str__(self):
         return self.nome
@@ -56,7 +56,7 @@ class Agua(models.Model):
         db_table = 'agua'
 
     def get_absolute_path(self):
-        return reverse('aqua-store:exibe_agua', args=[self.id, self.slug])
+        return reverse('aqua-store-app:exibe_agua', args=[self.id, self.slug])
 
     def __str__(self):
         return self.nome
@@ -73,10 +73,10 @@ class Produto(models.Model):
     disponivel = models.BooleanField(default=True)
 
     class Meta:
-        db_table = 'aqua-store'
+        db_table = 'produto'
 
     def get_absolute_path(self):
-        return reverse('aqua-store:exibe_produto', args=[self.id, self.slug])
+        return reverse('aqua-store-app:exibe_produto', args=[self.id, self.slug])
 
     def __str__(self):
         return self.nome

@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('aqua-store', '0002_agua_categoriaaguas'),
+        ('aqua-store-app', '0002_agua_categoriaaguas'),
     ]
 
     operations = [
