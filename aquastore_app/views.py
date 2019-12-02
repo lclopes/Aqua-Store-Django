@@ -15,7 +15,6 @@ def lista_aguas(request, slug_da_categoria=None):
                                                  'aguas': aguas,
                                                  'categoria': categoria})
 
-
 def exibe_agua(request, id, slug_da_agua):
    agua = get_object_or_404(Agua, id=id)
    return render(request, 'aquastore_app/exibe.html', {'agua': agua})
