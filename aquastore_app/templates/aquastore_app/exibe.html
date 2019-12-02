@@ -4,7 +4,6 @@
 <html lang="en">
 <head>
     {% include "base/header.html" %}
-    {% include "base/bgimage.html" %}
     <br>
 </head>
 
@@ -17,8 +16,8 @@
 {% endblock %}
 
 {% block conteudo %}
-    <body class="bg-blue">
-    <div class="container bg-white shadow-lg p-3 mb-5 ">
+    <body class="bg-white">
+    <div class="container bg-white p-3 mb-5 " style="margin-top: 90px;">
         <div class="row">
             <div class="col-md-3 mb-3 mb-md-0">
                 <!-- style="min-height: 150px; min-width: 150px;" -->
@@ -30,11 +29,10 @@
                 <h5><a href="{{ agua.categoria.get_absolute_path }}">{{ agua.categoria }}</a></h5>
                 <p>R$ {{ agua.preco }}</p>
                 <p>{{ agua.descricao }}</p>
-                <button type="button" class="btn btn-primary">Comprar</button>
+                <button type="button" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Adicionar ao carrinho</button>
             </div>
         </div>
     </div>
-    {% include "base/footer.html" %}
     </body>
     <script src="{% static 'aquastore_app/js/jquery-3.3.1.js' %}"></script>
     <script src="{% static 'aquastore_app/js/popper.js' %}"></script>
@@ -42,4 +40,12 @@
     <script src="{% static 'aquastore_app/js/script.js' %}"></script>
 
 {% endblock %}
+<footer class="footer">
+      <div class="container">
+         <div class="text-center">
+            <h5>© 2019. Aqua Store® é uma marca de Lucas de Castro Lopes.</h5>
+
+         </div>
+      </div>
+   </footer>
 
