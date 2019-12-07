@@ -10,7 +10,8 @@ urlpatterns = [
     path('<slug:slug_da_categoria>/', views.lista_aguas, name='lista_aguas_por_categoria'),
     path('<int:id>/<slug:slug_da_agua>/', views.exibe_agua, name='exibe_agua'),
     path('sobre.html', views.sobre, name='sobre'),
-    path('cadastro.html', views.cadastro, name='cadastro'),
+    path('cadastro.html', views.novo, name='cadastro'),
+    path('admin.html', views.admin, name='admin'),
 ]
 
 

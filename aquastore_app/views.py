@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import CategoriaAguas, Agua
+from aquastore_app.forms import AguaForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 def lista_aguas(request, slug_da_categoria=None):
@@ -37,3 +38,16 @@ def sobre(request):
 
 def cadastro(request):
     return render(request, 'aquastore_app/cadastro.html')
+
+def admin(request):
+    return render(request, 'aquastore_app/admin.html')
+
+#@login_required(login_url='/autenticacao')
+def novo(request):
+    form = AguaForm(request.POST or None)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    return render(request, 'aquastore_app/cadastro.html', {'form': form})
