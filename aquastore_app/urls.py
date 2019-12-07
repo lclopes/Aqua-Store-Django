@@ -13,8 +13,11 @@ urlpatterns = [
     path('cadastro.html', views.novo, name='cadastro'),
     path('listaadmin.html', views.adminlist, name='adminlist'),
     path('admin.html', views.admin, name='admin'),
+    path('busca.html', views.busca, name='busca'),
     path(r'<int:id>/update', views.atualiza, name='atualiza'),
     path(r'<int:id>/delete', views.deleta, name='deleta'),
+    path('busca.html', views.busca, name='busca'),
+    path('busca/', views.busca_aguas_lista, name='busca_aguas_lista'),
 ]
 
 
