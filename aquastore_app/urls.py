@@ -17,7 +17,8 @@ urlpatterns = [
     path(r'<int:id>/update', views.atualiza, name='atualiza'),
     path(r'<int:id>/delete', views.deleta, name='deleta'),
     path('busca.html', views.busca, name='busca'),
-    path('busca/', views.busca_aguas_lista, name='busca_aguas_lista'),
+    path('register.html', views.register, name='register'),
+    path('logout', views.logout_user, name='logout_user')
 ]
 
 

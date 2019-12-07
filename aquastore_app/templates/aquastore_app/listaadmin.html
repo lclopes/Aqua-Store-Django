@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "base/header.html" %}
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner shadow">
+         <div class="carousel-item active">
+            <img class="carousel-inner-page d-block w-100" src="{% static 'media/wave.jpg' %}" alt="First slide">
+            <div class="carousel-caption carousel-inner-text d-none d-md-block">
+               <h1 style="text-shadow: 1px 1px 2px grey;">Área do administrador</h1>
+            </div>
+         </div>
+      </div>
+    </div>
+</head>
+
+{% block estilo %}
+    <style>
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+            color: #fff;
+            background-color: #337ab7;
+        }
+
+        a.nav-link:hover {
+            background-color: #eeeeee;
+        }
+
+        a {
+            color: #337ab7;
+        }
+    </style>
+{% endblock %}
+
+{% block conteudo %}
+<body class="bg-white">
+
+    <div class="container p-3">
+    <h3 style="text-align:center" class="mb-3">{% if busca %} Busca por '{{ busca }}': {{ qtdElem }} resultado(s){% else %}Todos os produtos{% endif %}</h3>
+        <ul class="list-group">
+            {% for agua in aguas %}
+                <li class="list-group-item">
+                <div class="row">
+                    <div class="col">
+                        <img class="img-fluid rounded" style="max-width: 120px; max-height: 120px;"
+                         src="{% static 'aguas/' %}{{ agua.imagem }}">
+                    </div>
+                    <div class="col-10" style="align-self: center">
+                        <h5>{{ agua.nome }} - R$ {{ agua.preco }}</h5>
+                        <h5 class="text-info">{{ agua.categoria }}</h5>
+                        <a href="{{ agua.atualiza }}" class="btn-sm btn-primary mb-5" style="align-self: center">Atualizar</a>
+                        <a href="{{ agua.deleta }}" class="btn-sm btn-danger mb-5" style="align-self: center">Excluir</a>
+                    </div>
+                </div>
+                </li>
+            {% endfor %}
+        </ul>
+    <div class='row justify-content-center' style='font-size: 14px;'>
+        {% if aguas.has_other_pages %}
+                <ul class="pagination justify-content-center">
+                    {% if aguas.has_previous %}
+                    <li><a href="?page={{ aguas.previous_page_number }}" class="page-link">&laquo; Página anterior </a></li>
+                    {% endif %}
+                    {% for i in aguas.paginator.page_range %}
+                         {% if aguas.number == i %}
+                            <li class='page-item active'><a class='page-link' href='#'>{{ i }} </a></li>
+                         {% else %}
+                            <li class='page-item'><a class='page-link' href='?page={{ i }}'>{{ i }}</a></li>
+                         {% endif %}
+                    {% endfor %}
+                    {% if aguas.has_next %}
+                    <li><a href="?page={{ aguas.next_page_number }}" class="page-link"> Próxima página &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+
+        </div>
+    </div>
+    </div>
+
+    </body>
+{% endblock %}
+
+{% include 'base/footer.html' %}

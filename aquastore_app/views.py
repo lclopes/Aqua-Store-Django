@@ -2,7 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import CategoriaAguas, Agua
 from aquastore_app.forms import AguaForm, BuscaAguasForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.db.models import Sum, F, FloatField
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
 def lista_aguas(request, slug_da_categoria=None):
@@ -44,6 +46,7 @@ def cadastro(request):
     return render(request, 'aquastore_app/cadastro.html')
 
 
+@login_required
 def admin(request):
     return render(request, 'aquastore_app/admin.html')
 
@@ -64,6 +67,7 @@ def adminlist(request):
     return render(request, 'aquastore_app/listaadmin.html', {'aguas': aguas,
                                                              'qtdElem': qtdElem,
                                                              'busca': busca})
+
 
 # @login_required(login_url='/autenticacao')
 def novo(request):
@@ -99,40 +103,21 @@ def busca(request):
     })
 
 
-def busca_aguas_lista(request):
-    form = BuscaAguasForm(request.GET)
-    if (form.is_valid()):
-        busca_por = form.cleaned_data['busca_por']
-        lista_de_aguas = Agua.objects.filter(nome__icontains=busca_por).order_by('nome')
-
-        resultado = lista_de_aguas.aggregate(
-            total=Sum(F('preco'), output_field=FloatField()))
-
-        if resultado['total']:
-            total = '{0:.2f}'.format(resultado['total'])
-        else:
-            total = '0,00'
-
-        paginator = Paginator(lista_de_aguas, 5)
-        pagina = request.GET.get('pagina')
-        produtos = paginator.get_page(pagina)
-
-        #      lista_de_forms = []
-        #      for produto in produtos:
-        #         lista_de_forms.append(RemoveProdutoForm(initial={'produto_id': produto.id}))
-
-        lista_de_ids = []
-        for produto in produtos:
-            lista_de_ids.append(produto.id)
-
-        return render(request, 'produto/pesquisa_produto.html', {
-            'form': form,
-            #        'listas': zip(produtos, lista_de_forms),
-            'produtos': produtos,
-            'lista_de_ids': lista_de_ids,
-            'total': total,
-            'busca_por': busca_por
-        })
-
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('/')
     else:
-        raise ValueError('Ocorreu um erro inesperado ao tentar pesquisar um produto.')
+        form = UserCreationForm()
+    return render(request, 'registration/register.html', {'form': form})
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('/')

@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "base/header.html" %}
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner shadow">
+         <div class="carousel-item active">
+            <img class="carousel-inner-page d-block w-100" src="{% static 'media/wave.jpg' %}" alt="First slide">
+            <div class="carousel-caption carousel-inner-text d-none d-md-block">
+               <h1 style="text-shadow: 1px 1px 2px grey;">Área do administrador</h1>
+            </div>
+         </div>
+      </div>
+    </div>
+</head>
+<!--
+{% block estilo %}
+   .modal-open {
+      padding-right: 0px !important;
+   }
+   -->
+{% endblock %}
+
+{% block conteudo %}
+<div class="container bg-white p-5">
+<h3 style="text-align:center" class="mb-3">Busca de produtos</h3>
+   <form action="{% url 'aquastore_app:adminlist' %}" method ='GET'>
+      <div class='form-group row' style='margin-bottom: 10px;'>        
+         <label for='id_busca_por'                                   
+                class='col-lg-2 col-form-label font-weight-bold'>
+            Nome                                              
+         </label>                                                     
+         <div class='col-lg-10'>                                      
+            {{ form.busca_por }}                                     
+         </div>                                                       
+      </div>
+      
+      <div class='form-group row'>
+         <div class="col-lg-10 offset-lg-2">
+            <button type='submit' class='btn btn-primary'>
+              <!-- <img src="{% static 'produto/images/skin/database_table.png' %}"/>-->
+               Buscar
+            </button>
+         </div>
+      </div>
+   </form>
+</div>
+{% endblock %}
+
+
+
+
+
+

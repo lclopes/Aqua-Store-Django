@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de usuários</title>
+</head>
+<body>
+    <h1>Cadastro de usuários</h1>
+    <form method="post" action="{% url 'aquastore_app:register' %}">
+        {% csrf_token %}
+
+        {% if form.errors %}
+        <p>Há algo errado.</p>
+        {% endif %}
+
+        {{ form }}
+
+        <input type="submit" value="Cadastrar">
+    </form>
+</body>
+</html>

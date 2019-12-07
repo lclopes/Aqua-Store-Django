@@ -127,3 +127,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = 'C:/Users/lucas/OneDrive/UFF/2019.2/Desenvolvimento Web/django-06-produto-categoria-completo/aquastore_app/static/media'
 MEDIA_URL = '/media/'
+LOGIN_REDIRECT_URL = '/'
