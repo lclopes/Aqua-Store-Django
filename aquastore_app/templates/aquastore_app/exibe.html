@@ -32,6 +32,33 @@
                 <button type="button" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Adicionar ao carrinho</button>
             </div>
         </div>
+
+        <div class="col-lg-12">
+
+            <h3 style="text-align:center">{% if categoria %}{{ categoria.nome }}{% endif %}</h3>
+            <div class="row mb-6 p-3">
+                {% for agua in aguas_lista %}
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <a href="{{ agua.get_absolute_path }}">
+                        <div class="card-home mb-3 shadow-sm" style="align-items: center">
+
+                                    <!-- style="max-width: 90%;" -->
+                                <img class="img-fluid rounded water-product"
+                                         src="{% static 'aguas/' %}{{ agua.imagem }}">
+                            <h5 class="mt-3 card-title text-center">
+
+                                    {{ agua.nome }}
+
+                            </h5>
+                            R$ {{ agua.preco }}
+                            <br>
+                            <br>
+                        </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
     </body>
     <script src="{% static 'aquastore_app/js/jquery-3.3.1.js' %}"></script>
