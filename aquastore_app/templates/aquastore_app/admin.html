@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "base/header.html" %}
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner shadow">
+         <div class="carousel-item active">
+            <img class="carousel-inner-page d-block w-100" src="{% static 'media/wave.jpg' %}" alt="First slide">
+            <div class="carousel-caption carousel-inner-text d-none d-md-block">
+               <h1>Área do administrador</h1>
+            </div>
+         </div>
+      </div>
+    </div>
+</head>
+
+{% block estilo %}
+    <style>
+        a {
+            color: #337ab7;
+        }
+    </style>
+{% endblock %}
+
+{% block conteudo %}
+    <body class="bg-white">
+    <div class="container bg-white p-3 mb-5 " style="margin-top: 90px;">
+        <div class="row">
+            <div class="col-4">
+                <a href="{% url 'aquastore_app:cadastro' %}">
+                <div class="card-home mb-3 shadow-sm" style="align-items: center">
+                    <h3 class="mt-5 ">Cadastro de produto</h3>
+                    <p class="mb-5">Clique aqui para inserir um novo produto</p>
+                </div>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="{% url 'aquastore_app:cadastro' %}">
+                <div class="card-home mb-3 shadow-sm" style="align-items: center">
+                    <h3 class="mt-5 ">Alteração de produto</h3>
+                    <p class="mb-5">Clique aqui para alterar um produto existente</p>
+                </div>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="{% url 'aquastore_app:cadastro' %}">
+                <div class="card-home mb-3 shadow-sm" style="align-items: center">
+                    <h3 class="mt-5 ">Exclusão de produto</h3>
+                    <p class="mb-5">Clique aqui para excluir um produto</p>
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% include "base/footer.html" %}
+    </body>
+    <script src="{% static 'aquastore_app/js/jquery-3.3.1.js' %}"></script>
+    <script src="{% static 'aquastore_app/js/popper.js' %}"></script>
+    <script src="{% static 'aquastore_app/js/bootstrap.js' %}"></script>
+    <script src="{% static 'aquastore_app/js/script.js' %}"></script>
+
+{% endblock %}
+
+
