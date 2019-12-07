@@ -36,18 +36,11 @@
                     <a href="{% url 'aquastore_app:cadastro' %}" class="btn btn-primary mb-5">Novo produto</a>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-8">
                 <div class="card-home mb-3 shadow-sm" style="align-items: center">
-                    <h3 class="mt-5">Alteração de produto</h3>
-                    <p>Clique aqui para alterar um produto existente</p>
-                    <a href="{% url 'aquastore_app:cadastro' %}" class="btn btn-primary mb-5">Alterar produto</a>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card-home mb-3 shadow-sm" style="align-items: center">
-                    <h3 class="mt-5 ">Exclusão de produto</h3>
-                    <p>Clique aqui para excluir um produto</p>
-                    <a href="{% url 'aquastore_app:cadastro' %}" class="btn btn-primary mb-5">Excluir produto</a>
+                    <h3 class="mt-5">Alteração ou exclusão de produto</h3>
+                    <p>Clique aqui para visualizar a lista de produtos e alterar ou excluir um produto existente</p>
+                    <a href="{% url 'aquastore_app:adminlist' %}" class="btn btn-primary mb-5">Ver lista de produtos</a>
                 </div>
             </div>
         </div>

@@ -33,3 +33,9 @@ class Agua(models.Model):
 
     def __str__(self):
         return self.nome
+
+    def atualiza(self):
+        return reverse('aquastore_app:atualiza',args=[self.id])
+
+    def deleta(self):
+        return reverse('aquastore_app:deleta',args=[self.id])

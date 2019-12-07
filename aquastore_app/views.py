@@ -42,6 +42,11 @@ def cadastro(request):
 def admin(request):
     return render(request, 'aquastore_app/admin.html')
 
+def adminlist(request):
+    aguas = Agua.objects.filter(disponivel=True).order_by("nome")
+
+    return render(request, 'aquastore_app/listaadmin.html', {'aguas': aguas})
+
 #@login_required(login_url='/autenticacao')
 def novo(request):
     form = AguaForm(request.POST or None)
@@ -51,3 +56,17 @@ def novo(request):
             form.save()
             return redirect('/')
     return render(request, 'aquastore_app/cadastro.html', {'form': form})
+
+def atualiza(request,id):
+    agua = Agua.objects.get(id=id)
+    form = AguaForm(request.POST or None, instance=agua)
+
+    if form.is_valid():
+        form.save()
+        return redirect('/')
+    return render(request, 'aquastore_app/cadastro.html', {'form' : form})
+
+def deleta(request,id):
+    agua = Agua.objects.get(id=id)
+    agua.delete()
+    return redirect('/listaadmin.html')

@@ -11,7 +11,10 @@ urlpatterns = [
     path('<int:id>/<slug:slug_da_agua>/', views.exibe_agua, name='exibe_agua'),
     path('sobre.html', views.sobre, name='sobre'),
     path('cadastro.html', views.novo, name='cadastro'),
+    path('listaadmin.html', views.adminlist, name='adminlist'),
     path('admin.html', views.admin, name='admin'),
+    path(r'<int:id>/update', views.atualiza, name='atualiza'),
+    path(r'<int:id>/delete', views.deleta, name='deleta'),
 ]
 
 
