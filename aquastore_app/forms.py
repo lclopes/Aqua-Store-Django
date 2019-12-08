@@ -13,5 +13,5 @@ class BuscaAguasForm(forms.Form):
 class AguaForm(ModelForm):
     class Meta:
         model = Agua
-        fields = ['categoria', 'nome', 'slug', 'imagem', 'descricao', 'preco', 'estoque', 'disponivel']
+        fields = ['nome', 'categoria',  'imagem', 'descricao', 'preco', 'estoque', 'disponivel']
 
