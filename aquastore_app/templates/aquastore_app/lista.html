@@ -24,11 +24,27 @@
 {% endblock %}
 
 {% block conteudo %}
+    {% include "base/carousel.html" %}
+
+    <div class="container bg-white p-3 mb-5">
+    <form action="{% url 'aquastore_app:lista_aguas' %}" method ='GET' class="mt-5">
+      <div class='form-group row' style='margin-bottom: 10px; margin-left: 30px'>
+         <div class='col-lg-10'>
+            {{ form.busca_por }}
+         </div>
+         <div class="col-lg-2">
+            <button type='submit' class='shadow-sm btn btn-primary'>
+                <i class="fas fa-search"></i>
+               Buscar
+            </button>
+         </div>
+      </div>
+    </form>
     <div class="row" >
 
         <div class="col-lg-12">
-
-            <h3 style="text-align:center" class="mb-3">{% if not categoria %}Confira nossos produtos{% else %}{{ categoria.nome }}{% endif %}</h3>
+        <h3 style="text-align:center" class="mb-3 mt-2">{% if busca %} Busca por '{{ busca }}': {{ qtdElem }} resultado(s){% endif %}</h3>
+            <h3 style="text-align:center" class="mb-3 mt-2">{% if not categoria %}{% else %}Categoria: {{ categoria.nome }}{% endif %}</h3>
             <div class="row mb-6 p-3">
                 {% for agua in aguas_lista %}
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
@@ -38,12 +54,12 @@
                                     <!-- style="max-width: 90%;" -->
                                 <img class="img-fluid rounded water-product"
                                          src="{% static 'aguas/' %}{{ agua.imagem }}">
-                            <h5 class="mt-3 card-title text-center">
+                            <h5 class="mt-3 card-title text-center text-primary">
 
                                     {{ agua.nome }}
 
                             </h5>
-                            R$ {{ agua.preco }}
+                            <b class="text-success">R$ {{ agua.preco }}</b>
                             <br>
                             <br>
                         </div>
@@ -53,8 +69,7 @@
             </div>
         </div>
     </div>
-
-    <div class="pagination justify-content-center">
+     <div class="pagination justify-content-center">
 
         {% if aguas_lista.has_other_pages %}
             <nav aria-label="Navegação"></nav>
@@ -77,4 +92,6 @@
         {% endif %}
 
     </div>
-{% endblock %}
+    </div>
+
+    {% endblock %}

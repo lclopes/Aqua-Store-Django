@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class ProdutoConfig(AppConfig):
+class AquastoreAppConfig(AppConfig):
     name = 'aquastore_app'

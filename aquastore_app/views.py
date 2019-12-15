@@ -1,22 +1,35 @@
+from django.db.models import Sum, F, FloatField
+from django.http import QueryDict, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.decorators.csrf import csrf_exempt
+
 from .models import CategoriaAguas, Agua
 from aquastore_app.forms import AguaForm, BuscaAguasForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate,    login, logout
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 
 def lista_aguas(request, slug_da_categoria=None):
     categoria = None
     categorias = CategoriaAguas.objects.all().order_by("nome")
-    aguas = Agua.objects.filter(disponivel=True).order_by("nome")
+    aguas = Agua.objects.filter(disponivel=True).order_by("id")
 
     if slug_da_categoria:
         categoria = get_object_or_404(CategoriaAguas, slug=slug_da_categoria)
         aguas = aguas.filter(categoria=categoria).order_by("nome")
 
-    paginator = Paginator(aguas, 8)
+    busca = request.GET.get('busca_por')
+    form = BuscaAguasForm()
+
+    if busca:
+        aguas = aguas.filter(nome__icontains=busca)
+
+    qtdElem = aguas.count()
+
+    paginator = Paginator(aguas, 12)
     page = request.GET.get('page')
     try:
         aguas_lista = paginator.page(page)
@@ -29,12 +42,15 @@ def lista_aguas(request, slug_da_categoria=None):
 
     return render(request, 'aquastore_app/lista.html', {'categorias': categorias,
                                                         'page': page,
+                                                        'qtdElem': qtdElem,
+                                                        'busca': busca,
                                                         'aguas_lista': aguas_lista,
-                                                        'categoria': categoria})
+                                                        'categoria': categoria,
+                                                        'form': form})
 
 
 def exibe_agua(request, id):
-    agua = get_object_or_404(Agua, id=id)
+    agua = Agua.objects.get(id=id)
     return render(request, 'aquastore_app/exibe.html', {'agua': agua})
 
 
@@ -49,25 +65,6 @@ def cadastro(request):
 @login_required
 def admin(request):
     return render(request, 'aquastore_app/admin.html')
-
-
-def adminlist(request):
-    aguas = Agua.objects.filter(disponivel=True).order_by("nome")
-    busca = request.GET.get('busca_por')
-
-    if busca:
-        aguas = aguas.filter(nome__icontains=busca)
-
-    qtdElem = aguas.count()
-
-    paginator = Paginator(aguas, 4)
-    page = request.GET.get('page')
-    aguas = paginator.get_page(page)
-
-    return render(request, 'aquastore_app/listaadmin.html', {'aguas': aguas,
-                                                             'qtdElem': qtdElem,
-                                                             'busca': busca})
-
 
 # @login_required(login_url='/autenticacao')
 def novo(request):
@@ -93,14 +90,7 @@ def atualiza(request, id):
 def deleta(request, id):
     agua = Agua.objects.get(id=id)
     agua.delete()
-    return redirect('/listaadmin.html')
-
-
-def busca(request):
-    form = BuscaAguasForm()
-    return render(request, 'aquastore_app/busca.html', {
-        'form': form
-    })
+    return redirect('/')
 
 
 def register(request):
@@ -121,3 +111,5 @@ def register(request):
 def logout_user(request):
     logout(request)
     return redirect('/')
+
+###############################################################################################

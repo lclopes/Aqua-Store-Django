@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'aquastore_app',
+    'carrinho',
+    'autenticacao',
     'bootstrapform'
 ]
 
@@ -110,20 +112,27 @@ LANGUAGE_CODE = 'pt-br'
 USE_THOUSAND_SEPARATOR = True
 TIME_ZONE = 'America/Sao_Paulo'
 
-# A boolean that specifies whether Django’s translation 
+# A boolean that specifies whether Django’s translation
 # system should be enabled.
 USE_I18N = True
 
 # A boolean that specifies if localized formatting of data
 #  will be enabled by default or not.
-USE_L10N = True 
+USE_L10N = True
 
 USE_TZ = True
+
+CARRINHO_SESSION_ID='carrinho'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_ROOT = 'C:/Users/lucas/OneDrive/UFF/2019.2/Desenvolvimento Web/django-06-produto-categoria-completo/aquastore_app/static/media'
+MEDIA_ROOT = 'C:/Users/lucas/PycharmProjects/aquastore/aquastore_app/static/media'
 MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = '/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'aquastore_app/static/'),
+    os.path.join(BASE_DIR, 'carrinho/static/'),
+]

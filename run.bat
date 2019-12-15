@@ -1,1 +1,0 @@
-..\virtenv\Scripts\activate

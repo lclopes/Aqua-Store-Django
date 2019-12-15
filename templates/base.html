@@ -6,17 +6,18 @@
     <meta charset="UTF-8">
     <title>Aqua Store</title>
     {% include "base/header.html" %}
-    {% include "base/carousel.html" %}
+
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <br>
 </head>
+
 <body class="bg-white">
 
-    <div class="container bg-white p-3 mb-5">
-        {% block conteudo %}
 
-        {% endblock %}
-    </div>
+    {% block conteudo %}
+
+    {% endblock %}
+
 
     {% include "base/footer.html" %}
 
@@ -24,8 +25,15 @@
     <script src="{% static 'aquastore_app/js/popper.js' %}"></script>
     <script src="{% static 'aquastore_app/js/bootstrap.js' %}"></script>
     <script src="{% static 'aquastore_app/js/script.js' %}"></script>
+    <script src="{% static 'aquastore_app/js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'aquastore_app/js/jquery.mask.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            {% block domready %}
+
+            {% endblock %}
+        });
+    </script>
 </body>
-
-
 
 </html>

@@ -1,0 +1,76 @@
+{% load static %}
+
+<div>
+    <div class="w3-content w3-display-container" style="" >
+
+
+        <div class="col-12">
+            <div class="table-responsive">
+                <table style="width:100%" class="table table-lg table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Produto</th>
+                        <th class="text-center">Nome</th>
+                        <th class="text-center">Preço</th>
+                        <th class="text-center">Quantidade</th>
+                        <th class="text-center">Total</th>
+                        <th class="text-center">Remover</th>
+
+                    </tr>
+                    </thead>
+                    <tbody id="tbody2">
+                    {% for agua, form, valores_ind in listas %}
+                        <tr>
+                            <td width="10%" class="text-center id">
+                                <a href="{% url 'aquastore_app:exibe_agua' agua.id %}">
+                                    <img class="card-img-top" src="{% static 'aguas/' %}{{ agua.imagem }}">
+                                </a>
+
+                            </td>
+                            <td width="35%">
+                                {{ agua.nome }}
+                            </td>
+                            <td width="15%" class="text-center">
+                                {{ agua.preco }}
+                            </td>
+                            <td width="15%" class="text-center">
+                                <form class="mx-auto" style="width: 60px;" action ="{% url 'carrinho:atualiza_qtd_carrinho' %}"
+                                      method ="POST" novalidate>
+                                    {% csrf_token %}
+                                    {{ form.quantidade }}
+                                </form>
+                            </td>
+                                                        <td width="10%" class="text-center">
+                                {{ valores_ind }}
+                            </td>
+
+
+                            <td width="10%" class="text-center">
+                                <form style="margin-bottom: 0px;"
+                                      action ="{% url 'carrinho:remove_produto_carrinho' %}"
+                                      method ="post" novalidate>
+                                    {% csrf_token %}
+                                    <button style="margin-top: 0px; margin-bottom: 0px; padding-top: 3px; padding-bottom: 3px;"
+                                            type="button" class="btn btn-sm btn-danger btn-remove">
+                                        Remover
+                                    </button>
+                                </form>
+                            </td>
+
+
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="4" width="90%" class="text-left">
+                            <strong style="margin-left: 10px;">Subtotal</strong>
+                        </td>
+                        <td width="10%" class="text-right pr-3">
+                            <strong id="valor-do-estoque">{{ valor_do_carrinho }}</strong>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

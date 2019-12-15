@@ -17,8 +17,8 @@ class CategoriaAguas(models.Model):
 
 
 class Agua(models.Model):
-    categoria = models.ForeignKey(CategoriaAguas, related_name='aguas', on_delete=models.DO_NOTHING)
     nome = models.CharField(max_length=200, db_index=True)
+    categoria = models.ForeignKey(CategoriaAguas, related_name='aguas', on_delete=models.DO_NOTHING)
     imagem = models.CharField(max_length=200)
     descricao = models.TextField(blank=True)
     preco = models.DecimalField(max_digits=10, decimal_places=2)
@@ -39,14 +39,3 @@ class Agua(models.Model):
 
     def deleta(self):
         return reverse('aquastore_app:deleta',args=[self.id])
-
-
-class Carrinho(models.Model):
-    aguas = models.ForeignKey(Agua, related_name='aguas', on_delete=models.DO_NOTHING)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    preco = models.DecimalField(max_digits=10, decimal_places=2)
-    qtd = models.PositiveIntegerField()
-
-    def preco_total(self):
-        return self.preco * self.qtd
-

@@ -21,25 +21,36 @@
 
 {% block content %}
 <div class="container mb-4" style="margin-top: 50px;">
-    <form method="POST">
+    <form method="POST" novalidate>
 
             {% csrf_token %}
+
         <fieldset>
-            <div class="form-group row">
-                 <p class="col-lg-10 " style="margin-bottom: 20px; ">Nome: {{ form.nome }}</p>
-            </div>
-            <div class="form-group row">
-                <p class="col-lg-10 " style="margin-bottom: 20px; ">Categoria: {{ form.categoria }}</p>
-            </div>
-        </fieldset>
+            <p>Nome: {{ form.nome }}</p>
+            {% for error in form.nome.errors %}
+                <p class="help" style="color: red;">{{ error }}</p>
+            {% endfor %}
+            <p>Categoria: {{ form.categoria }}</p>
+            {% for error in form.categoria.errors %}
+                <p class="help" style="color: red;">{{ error }}</p>
+            {% endfor %}
             <p>Preço: {{ form.preco }}</p>
+            {% for error in form.preco.errors %}
+                <p class="help" style="color: red;">{{ error }}</p>
+            {% endfor %}
             <p>Estoque: {{ form.estoque }}</p>
+            {% for error in form.estoque.errors %}
+                <p class="help" style="color: red;">{{ error }}</p>
+            {% endfor %}
             <p>Disponivel: {{ form.disponivel }}</p>
-            <p style="margin-left: 12px">Imagem: {{ form.imagem }}</p>
-            <div class="row">
-                Descrição:
-                   {{ form.descricao }}
-                </div>
+
+            <p>Imagem: {{ form.imagem }}</p>
+            {% for error in form.imagem.errors %}
+                <p class="help" style="color: red;">{{ error }}</p>
+            {% endfor %}
+            <p>Descrição: {{ form.descricao }}</p>
+
+        </fieldset>
 
             <button class="btn btn-primary" type="submit">Salvar</button>
 

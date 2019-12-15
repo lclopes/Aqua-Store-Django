@@ -6,9 +6,9 @@
               {% if user.is_authenticated %}
                         Usuário logado: {{ user.username }} |
                   <a href="{% url 'aquastore_app:admin' %}">Área do administrador </a> |
-                  <a href="{% url 'aquastore_app:logout_user' %}">Fazer logout</a>
+                  <a href="{% url 'autenticacao:logout_user' %}">Fazer logout</a>
                     {% else %}
-                     <a href="{% url 'login' %}">Faça seu login</a> |
+                     <a href="{% url 'autenticacao:login_user' %}">Faça seu login</a> |
                      <a href="{% url 'aquastore_app:register' %}"> Crie sua conta</a>
                     {% endif %}
               </p>

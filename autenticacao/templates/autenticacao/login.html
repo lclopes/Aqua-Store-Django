@@ -1,0 +1,54 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="{% static 'aquastore_app/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'aquastore_app/css/all.css' %}">
+    <link href="{% static 'aquastore_app/css/styles.css' %}" rel="stylesheet" type="text/css">
+    <title>Login</title>
+</head>
+<body class="bg-light">
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Login</h5>
+                    <form class="form-signin" action="submit" method="POST">
+                        {% csrf_token %}
+                        <div class="form-label-group">
+                            <label for="username">Usuário</label>
+                            <input type="username" class="form-control" id="username" name="username" placeholder="Login"  autofocus>
+                        </div>
+
+                        <div class="form-label-group">
+                            <label for="password">Senha</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Senha" >
+                        </div>
+
+                        {% for message in messages %}
+                            <div class="alert alert-danger mt-4">
+                                <strong>Error!</strong> {{ message }}
+                            </div>
+                        {% endfor %}
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase mt-4" type="submit">Entrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'aquastore_app/js/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'aquastore_app/js/popper.js' %}"></script>
+<script src="{% static 'aquastore_app/js/bootstrap.js' %}"></script>
+<script src="{% static 'aquastore_app/js/script.js' %}"></script>
+</body>
+</html>

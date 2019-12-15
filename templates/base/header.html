@@ -15,15 +15,17 @@
             <div class="collapse navbar-collapse" id="menu">
 
                 <div class="navbar-nav mr-auto">
-                    <a class="nav-link nav-item" href="/gourmet">
+                    <a class="nav-link nav-item" href="/cat/gourmet">
                         <i class="fas fa-glass-cheers"></i> gourmet</a>
-                    <a class="nav-link nav-item" href="/tradicionais">
+                    <a class="nav-link nav-item" href="/cat/tradicionais">
                         <i class="fas fa-wine-bottle"></i> tradicionais</a>
-                    <a class="nav-link nav-item" href="/outros">
+                    <a class="nav-link nav-item" href="/cat/outros">
                         <i class="fas fa-tools"></i> outros</a>
                 </div>
 
                 <div class="navbar-nav ml-auto">
+                    <a class="nav-link nav-item" href="{% url 'carrinho:exibe_produtos_e_carrinho' %}">
+                        <i class="fas fa-shopping-cart"></i> carrinho</a>
                     <a class="nav-link nav-item" href="{% url 'aquastore_app:sobre' %}">
                         <i class="fas fa-info-circle"></i> sobre nós</a>
                 </div>
@@ -35,6 +37,7 @@
     </nav>
 
 </header>
+
 <link href="{% static 'aquastore_app/css/bootstrap.css' %}" rel="stylesheet">
 <link href="{% static 'aquastore_app/css/all.css' %}" rel="stylesheet">
 <link href="{% static 'aquastore_app/css/styles.css' %}" rel="stylesheet">
